@@ -12,9 +12,9 @@ app.get("/", (request, response) => {
 
 app.get("/:id", (request, response) => {
   const id = parseInt(request.params.id);
-  const foundCohort = cohorts.filter(cohort => id === cohort.ID);
+  const foundCohort = cohorts.find(cohort => id === cohort.ID);
   if (foundCohort) {
-    response.json({data: foundCohort});
+    response.status(404).json({data: foundCohort});
   } else {
     response.json(
       {
