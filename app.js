@@ -14,9 +14,9 @@ app.get("/:id", (request, response) => {
   const id = parseInt(request.params.id);
   const foundCohort = cohorts.find(cohort => id === cohort.ID);
   if (foundCohort) {
-    response.status(404).json({data: foundCohort});
+    response.json({data: foundCohort});
   } else {
-    response.json(
+    response.status(404).json(
       {
         error: {
             "message": "No record found!"
